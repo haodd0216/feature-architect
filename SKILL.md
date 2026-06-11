@@ -18,13 +18,15 @@ Do not split for decoration. Split when a boundary has a clear purpose.
 ## Workflow
 
 1. Inspect the existing project structure before choosing file locations.
-2. Classify the request as `tiny`, `normal`, `complex`, or `refactor-involved`.
-3. Follow local project conventions before applying generic structure.
-4. For `complex` work, present a split plan and wait for user approval before implementation.
-5. For `refactor-involved` work, ask for explicit user consent before changing existing structure.
-6. Implement within the approved boundary.
-7. Run verification appropriate to the changed files.
-8. Finish with the completion checklist.
+2. Classify the base request size as `tiny`, `normal`, or `complex`.
+3. Then decide whether `refactor-involved` applies as an additive marker. A task can be both `complex` and `refactor-involved`.
+4. Follow local project conventions before applying generic structure.
+5. Approval gates allow read-only exploration, listing files, and checking existing structure, but require approval before writing implementation code.
+6. For `complex` work, present a split plan and wait for user approval before writing implementation code. If the user already explicitly approved the split plan, execute that approved plan.
+7. For `refactor-involved` work, ask for explicit user consent before changing existing structure. For `complex` + `refactor-involved` work, present the split plan and include the consent gate before implementation.
+8. Implement within the approved boundary.
+9. Run verification appropriate to the changed files.
+10. Finish with the completion checklist.
 
 ## Task Classification
 
@@ -52,10 +54,12 @@ Behavior:
 
 Use for new pages, feature modules, complex forms, list-detail flows, multiple API calls, shared state, cross-component coordination, routing, permissions, caching, or business rules that affect more than one UI unit.
 
+If any listed signal appears, default to `complex` unless existing project patterns prove the change is highly local.
+
 Behavior:
-- Present a split plan before implementation.
+- Present a split plan before writing implementation code.
 - Include business boundary, proposed files, responsibility of each file, data flow, reusable logic candidates, verification plan, and possible refactor impact.
-- Wait for user approval before writing code.
+- Wait for user approval before writing implementation code, unless the user already explicitly approved the proposed split plan.
 
 Use `templates/split-plan.md` as the output format.
 
@@ -63,14 +67,22 @@ Use `templates/split-plan.md` as the output format.
 
 Use when existing code structure blocks a clean implementation or when the requested change would be safer with a targeted split of existing files.
 
+This is an additive marker, not an exclusive classification. Apply it after choosing `tiny`, `normal`, or `complex`.
+
+Trigger signals include moving existing logic, splitting existing components, changing import paths, renaming files, extracting a shared hook/composable/service, or adjusting store/service boundaries.
+
 Behavior:
 - Explain the structural problem.
 - Explain why it affects this request.
 - Propose the smallest useful refactor.
-- Ask the user whether to include the refactor.
+- Ask the user whether to include the refactor before writing implementation code.
 - If the user declines, implement the smallest local change that does not worsen the structure.
 
 Use `templates/refactor-consent.md` as the consent format.
+
+## Reference Files
+
+The referenced templates and examples are part of this skill package and should be available alongside SKILL.md.
 
 ## Default Splitting Strategy
 
