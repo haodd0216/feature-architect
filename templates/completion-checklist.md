@@ -7,7 +7,7 @@ Use this before finalizing Vue or React frontend work.
 - [ ] Each touched file can be explained in one sentence.
 - [ ] Each extracted file has a clear owner and dependency direction.
 - [ ] Business logic is not hidden inside presentation components.
-- [ ] Page or route containers do not own every detail of requests, state, rendering, and helpers.
+- [ ] Page or route containers do not own every detail of requests, state, rendering, and helpers for complex workflows unless the local project pattern clearly calls for it.
 - [ ] Services do not import UI components.
 - [ ] Hooks or composables expose focused interfaces instead of becoming hidden page components.
 - [ ] Shared stores are used only for state that truly needs shared lifecycle.

@@ -34,6 +34,8 @@ Name the local project pattern being followed, such as feature folders, route fo
 **Refactor Impact:**
 
 - Existing code refactor needed: yes or no.
+- Affected area: name the file, folder, component, hook, composable, service, or store.
+- Reason: explain why the requested change requires or avoids structural change.
 - If yes, ask for user consent before changing structure.
 
 **Verification Plan:**

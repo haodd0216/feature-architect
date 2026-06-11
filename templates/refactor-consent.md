@@ -4,7 +4,7 @@ Use this when existing Vue or React code should be restructured to implement the
 
 ## Consent Prompt
 
-I found that `[file or area]` currently mixes `[responsibility A]`, `[responsibility B]`, and `[responsibility C]`.
+I found that [file or area] currently mixes [responsibilities or structural concerns].
 
 This affects the requested change because `[specific reason tied to the current task]`.
 
@@ -20,6 +20,7 @@ Risk:
 
 Fallback if you do not want the refactor now:
 
-- I can implement the requested change locally in `[file]` and avoid broad restructuring, but I will keep the new code isolated as much as possible.
+- I can implement the requested change locally in `[file]` without broad restructuring, but the result may retain some current complexity.
+- If there is no safe low-risk fallback, say so explicitly.
 
 Do you want me to include this refactor in the change?
